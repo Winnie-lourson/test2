@@ -1,0 +1,369 @@
+/* =========================
+   FOND GLOBAL
+========================= */
+body {
+    background: linear-gradient(135deg, #dfe9f3 0%, #ffffff 100%);
+    min-height: 100vh;
+}
+
+/* =========================
+   TITRES
+========================= */
+h1 {
+    margin-top: 40px;
+    font-size: 42px;
+    color: #1f2937;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 26px;
+    color: #374151;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   BANDEAU INFOS
+========================= */
+#infos {
+    display: block;
+    background: #e0edff;
+    padding: 10px 20px;
+    border-radius: 999px;
+
+    text-align: center;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    color: #2563eb;
+
+    margin-top: 0;
+    margin-bottom: 25px;
+
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* =========================
+   CARTE CENTRALE
+========================= */
+.zone-scan {
+    background: white;
+
+    width: 90%;
+    max-width: 950px;
+
+    margin: 40px auto;
+
+    padding: 40px;
+
+    border-radius: 24px;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   INPUTS
+========================= */
+input {
+    border: 2px solid #d1d5db;
+
+    border-radius: 12px;
+
+    padding: 14px;
+
+    transition: 0.3s;
+
+    font-size: 16px;
+}
+
+input:focus {
+    border-color: #2563eb;
+
+    outline: none;
+
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.2);
+}
+
+/* =========================
+   LIGNE VALIDATION
+========================= */
+.ligne-validation {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+/* =========================
+   BOUTONS GLOBAUX
+========================= */
+button {
+    border: none;
+
+    border-radius: 12px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+
+    cursor: pointer;
+
+    padding: 12px 18px;
+}
+
+button:hover:not(:disabled) {
+    background: #1d4ed8;
+
+    transform: translateY(-2px);
+}
+
+/* =========================
+   BOUTONS SUPPORT / BT
+========================= */
+#btnSupport:disabled,
+#btnBT:disabled,
+#btnAnnuler:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* =========================
+   BOUTON FIN DE SCAN
+========================= */
+#btnFinScan {
+    margin-top: 25px;
+    background-color: #111827;
+}
+
+#btnFinScan:hover {
+    background-color: black;
+}
+
+/* =========================
+   BOUTON ANNULER
+========================= */
+#btnAnnuler {
+    margin-top: 20px;
+
+    padding: 12px 18px;
+
+    min-width: 220px;
+}
+
+/* =========================
+   BOUTONS ACCUEIL + RETOUR
+========================= */
+.btn-accueil,
+.btn-retour {
+    position: absolute;
+
+    left: 10px;
+}
+
+.btn-accueil {
+    top: 15px;
+}
+
+.btn-retour {
+    top: 65px;
+}
+
+.btn-accueil button,
+.btn-retour button {
+    background: #111827;
+
+    width: 110px;
+
+    padding: 12px 0;
+
+    font-size: 14px;
+
+    text-align: center;
+
+    box-sizing: border-box;
+}
+
+.btn-accueil button:hover,
+.btn-retour button:hover {
+    background: black;
+}
+
+/* =========================
+   TITRES SECTIONS
+========================= */
+h3 {
+    color: #374151;
+    margin-bottom: 15px;
+}
+
+/* =========================
+   TABLEAU
+========================= */
+#tableHistorique {
+    width: 100%;
+
+    margin-top: 20px;
+
+    border-collapse: collapse;
+
+    background-color: white;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+}
+
+#tableHistorique th,
+#tableHistorique td {
+    border: 1px solid #d1d5db;
+
+    padding: 12px;
+
+    text-align: left;
+
+}
+
+#tableHistorique th {
+    background-color: #f3f4f6;
+
+    font-weight: bold;
+}
+
+#tableHistorique tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+#tableHistorique tr:hover {
+    background-color: #eef6ff;
+}
+
+/* Support */
+#tableHistorique th:nth-child(1),
+#tableHistorique td:nth-child(1) {
+    width: 50%;
+}
+
+/* Adresse */
+#tableHistorique th:nth-child(2),
+#tableHistorique td:nth-child(2) {
+    width: 50%;
+}
+
+/* =========================
+   AFFICHAGE SUPPORT + ADRESSE
+========================= */
+#affichageSupport,
+#affichageBT {
+    font-family: monospace;
+
+    font-size: 22px;
+
+    text-align: center;
+
+    margin-top: 20px;
+
+    min-height: 30px;
+}
+
+/* =========================
+   PARTIES VALIDATION
+========================= */
+.partie-ok {
+    color: #2563eb;
+}
+
+.partie-erreur {
+    color: #dc2626;
+
+    background: #fee2e2;
+
+    padding: 2px 4px;
+
+    border-radius: 6px;
+}
+
+/* =========================
+   MESSAGES ERREUR
+========================= */
+#erreurSupport,
+#erreurBT {
+    margin-top: 15px;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    min-height: 20px;
+}
+
+/* =========================
+   BLOCS ANIMÉS
+========================= */
+#blocSupport,
+#blocBT {
+    animation: apparition 0.4s ease;
+}
+
+@keyframes apparition {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .zone-scan {
+        padding: 25px;
+    }
+
+    .ligne-validation {
+        flex-direction: column;
+    }
+
+    .ligne-validation input,
+    .ligne-validation button {
+        width: 100%;
+    }
+
+    #tableHistorique {
+        font-size: 14px;
+    }
+
+    #infos {
+        font-size: 18px;
+    }
+
+    #tableHistorique th,
+    #tableHistorique td {
+        white-space: normal;
+    }
+}

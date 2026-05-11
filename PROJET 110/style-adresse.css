@@ -1,0 +1,424 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+
+    overflow-x: hidden;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+/* =========================
+   FOND GLOBAL
+========================= */
+body {
+    font-family: Arial, sans-serif;
+
+    margin: 0;
+    padding: 0;
+
+    text-align: center;
+
+    background: linear-gradient(135deg, #dfe9f3 0%, #ffffff 100%);
+
+    min-height: 100vh;
+}
+
+/* =========================
+   TITRES
+========================= */
+h1 {
+    margin-top: 40px;
+
+    font-size: 42px;
+
+    color: #1f2937;
+
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 24px;
+
+    color: #374151;
+
+    margin-bottom: 20px;
+}
+
+/* =========================
+   BANDEAU CHOIX
+========================= */
+#texteChoix {
+    display: inline-block;
+
+    background: #e0edff;
+
+    padding: 10px 20px;
+
+    border-radius: 999px;
+
+    text-align: center;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    color: #2563eb;
+
+    margin-top: 0;
+
+    margin-bottom: 25px;
+
+    width: 100%;
+
+    box-sizing: border-box;
+}
+
+/* =========================
+   CARTE PRINCIPALE
+========================= */
+.zone-principale {
+    background: white;
+
+    width: 90%;
+    max-width: 700px;
+
+    margin: 40px auto;
+
+    padding: 40px;
+
+    border-radius: 24px;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   LIGNES VALIDATION
+========================= */
+.ligne-validation {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+/* =========================
+   INPUTS
+========================= */
+input {
+    border: 2px solid #d1d5db;
+
+    border-radius: 12px;
+
+    padding: 14px 18px;
+
+    min-height: 56px;
+
+    width: 100%;
+
+    max-width: 420px;
+
+    font-size: 18px;
+
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #2563eb;
+
+    outline: none;
+
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.2);
+}
+
+/* =========================
+   BOUTONS GLOBAUX
+========================= */
+button {
+    border: none;
+
+    border-radius: 12px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-weight: bold;
+
+    min-height: 56px;
+
+    padding: 14px 20px;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    touch-action: manipulation;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:hover:not(:disabled) {
+    background: #1d4ed8;
+
+    transform: translateY(-2px);
+}
+
+/* =========================
+   BOUTON CHECK
+========================= */
+#btnCheck:disabled {
+    background-color: transparent !important;
+
+    cursor: default;
+
+    box-shadow: none;
+
+    border: none;
+
+    font-size: 28px;
+
+    transform: translate(-8px, -4px);
+
+    width: 50px;
+
+    height: 50px;
+}
+
+/* =========================
+   BOUTON CRÉER FICHIER
+========================= */
+#btnFichier:disabled {
+    background-color: #9ca3af;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+/* =========================
+   BOUTONS ACCUEIL + RETOUR
+========================= */
+.btn-accueil,
+.btn-retour {
+    position: absolute;
+
+    left: 10px;
+}
+
+.btn-accueil {
+    top: 15px;
+}
+
+.btn-retour {
+    top: 85px;
+}
+
+/* Même taille exacte */
+.btn-accueil button,
+.btn-retour button {
+    background: #111827;
+
+    width: 110px;
+
+    padding: 12px 0;
+
+    font-size: 14px;
+
+    text-align: center;
+
+    box-sizing: border-box;
+}
+
+.btn-accueil button:hover,
+.btn-retour button:hover {
+    background: black;
+}
+
+/* =========================
+   BLOCS ANIMÉS
+========================= */
+#blocChoix,
+#blocPalette {
+    animation: apparition 0.4s ease;
+}
+
+@keyframes apparition {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   BOUTONS CHOIX MOUVEMENT
+========================= */
+#blocChoix button {
+    min-width: 220px;
+}
+
+/* =========================
+   RESPONSIVE DESKTOP / ZEBRA TC52
+========================= */
+
+/* Zebra / Tablettes */
+@media (max-width: 900px) {
+
+    body {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 34px;
+
+        margin-top: 95px;
+    }
+
+    h2 {
+        font-size: 20px;
+
+        margin-bottom: 20px;
+    }
+
+    #texteChoix {
+        width: 100%;
+
+        max-width: 100%;
+
+        font-size: 18px;
+
+        padding: 12px 18px;
+    }
+
+    .zone-principale {
+        width: 100%;
+
+        max-width: 700px;
+
+        padding: 30px 22px;
+
+        margin-top: 25px;
+    }
+
+    .ligne-validation {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 16px;
+
+        width: 100%;
+    }
+
+    .ligne-validation input,
+    .ligne-validation button {
+        width: 100%;
+
+        min-height: 68px;
+
+        font-size: 22px;
+    }
+
+    input {
+        font-size: 22px;
+
+        padding: 18px;
+    }
+
+    #btnCheck:disabled {
+        width: 100%;
+
+        min-height: 68px;
+
+        transform: none;
+
+        font-size: 30px;
+    }
+
+    #blocChoix button {
+        width: 100%;
+
+        max-width: 100%;
+
+        min-height: 78px;
+
+        font-size: 22px;
+    }
+
+    .btn-accueil {
+        top: 15px;
+        left: 10px;
+    }
+
+    .btn-retour {
+        top: 85px;
+        left: 10px;
+    }
+
+    .btn-accueil button,
+    .btn-retour button {
+        width: 130px;
+
+        min-height: 54px;
+
+        font-size: 18px;
+    }
+}
+
+/* Smartphones / Zebra compact */
+@media (max-width: 720px) {
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    .zone-principale {
+        padding: 22px 18px;
+    }
+
+    .ligne-validation input,
+    .ligne-validation button,
+    input {
+        min-height: 64px;
+
+        font-size: 20px;
+    }
+
+    #texteChoix {
+        font-size: 16px;
+    }
+
+    #blocChoix button {
+        min-height: 72px;
+
+        font-size: 20px;
+    }
+
+    .btn-accueil button,
+    .btn-retour button {
+        width: 120px;
+
+        font-size: 16px;
+    }
+}

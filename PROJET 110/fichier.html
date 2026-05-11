@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fichiers</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-fichier.css">
+</head>
+
+<body>
+
+<a href="accueil.html" class="btn-accueil">
+    <button>Accueil</button>
+</a>
+
+<h1>Bibliothèque des scans</h1>
+
+<div class="filtres-types">
+
+    <button onclick="filtrerFichiers('tous')">Tous</button>
+
+    <button onclick="filtrerFichiers('reception')">Réception</button>
+
+    <button onclick="filtrerFichiers('expedition')">Expédition</button>
+
+    <button onclick="filtrerFichiers('adresse')">Adresse</button>
+
+</div>
+
+<div id="bibliotheque"></div>
+
+<script>
+
+let bibliotheque = JSON.parse(localStorage.getItem("fichiersScans")) || [];
+
+let container = document.getElementById("bibliotheque");
+
+afficherFichiers("tous");
+
+
+// ===============================
+// AFFICHAGE FILTRÉ
+// ===============================
+function afficherFichiers(type) {
+
+    container.innerHTML = "";
+
+    let fichiersFiltres = bibliotheque;
+
+    if (type !== "tous") {
+
+        fichiersFiltres = bibliotheque.filter(
+            fichier => fichier.type === type
+        );
+    }
+
+    if (fichiersFiltres.length === 0) {
+
+        container.innerHTML =
+            "<p>Aucun fichier dans cette catégorie</p>";
+
+        return;
+    }
+
+    fichiersFiltres.forEach((fichier, indexGlobal) => {
+
+        let vraiIndex =
+            bibliotheque.indexOf(fichier);
+
+        let typeLabel =
+            fichier.type || "reception";
+
+        let bloc = document.createElement("div");
+
+        bloc.classList.add(
+            "fichier-card",
+            "type-" + typeLabel
+        );
+
+        bloc.innerHTML = `
+
+            <div class="fichier-top">
+
+                <span class="badge-type ${typeLabel}">
+                    ${typeLabel.toUpperCase()}
+                </span>
+
+                <div class="fichier-infos-droite">
+
+                    <span class="fichier-date">
+                        ${fichier.dateCreation}
+                    </span>
+
+                    <span class="fichier-total">
+                        ${fichier.totalScans} colis
+                    </span>
+
+                </div>
+
+            </div>
+
+            <h3>${fichier.nom}</h3>
+
+            <div class="fichier-actions">
+
+                <button onclick="voirFichier(${vraiIndex})">
+                    Ouvrir
+                </button>
+
+                <button onclick="extraireFichier(${vraiIndex})">
+                    Extraction
+                </button>
+
+                <button onclick="supprimerFichier(${vraiIndex})">
+                    Supprimer
+                </button>
+
+            </div>
+        `;
+
+        container.appendChild(bloc);
+    });
+}
+
+
+// ===============================
+// FILTRE
+// ===============================
+function filtrerFichiers(type) {
+
+    afficherFichiers(type);
+}
+
+
+// ===============================
+// OUVRE LE FICHIER
+// ===============================
+function voirFichier(index) {
+
+    localStorage.setItem(
+        "fichierActif",
+        JSON.stringify(bibliotheque[index])
+    );
+
+    window.location.href = "fichier-detail.html";
+}
+
+
+// ===============================
+// EXTRACTION EXCEL (.xlsx compatible Excel via CSV)
+// ===============================
+function extraireFichier(index) {
+
+    let fichier = bibliotheque[index];
+
+    if (!fichier || !fichier.contenu) {
+        alert("Fichier introuvable");
+        return;
+    }
+
+    let contenu =
+        "Nom du fichier :," + fichier.nom + "\n" +
+        "Type :," + (fichier.type || "reception") + "\n" +
+        "Date création :," + fichier.dateCreation + "\n" +
+        "Total scans :," + fichier.totalScans + "\n\n" +
+        "Numéro support,Numéro BT,Date\n";
+
+    fichier.contenu.forEach(scan => {
+
+        contenu +=
+            scan.support + "," +
+            scan.bt + "," +
+            scan.date + "\n";
+    });
+
+    let blob = new Blob(
+        [contenu],
+        {
+            type: "application/vnd.ms-excel;charset=utf-8;"
+        }
+    );
+
+    let lien = document.createElement("a");
+
+    lien.href =
+        URL.createObjectURL(blob);
+
+    // Nom du fichier propre
+    let nomFichier =
+        fichier.nom.replace(/[\\\\/:*?\"<>|]/g, "_");
+
+    lien.download =
+        nomFichier + ".csv";
+
+    document.body.appendChild(lien);
+
+    lien.click();
+
+    document.body.removeChild(lien);
+}
+
+
+// ===============================
+// SUPPRIME LE FICHIER
+// ===============================
+function supprimerFichier(index) {
+
+    if (!confirm("Supprimer ce fichier ?")) {
+        return;
+    }
+
+    bibliotheque.splice(index, 1);
+
+    localStorage.setItem(
+        "fichiersScans",
+        JSON.stringify(bibliotheque)
+    );
+
+    location.reload();
+}
+
+</script>
+
+</body>
+</html>

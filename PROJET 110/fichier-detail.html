@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Détail du fichier</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-fichier-detail.css">
+</head>
+
+<body>
+
+<a href="accueil.html" class="btn-accueil">
+    <button>Accueil</button>
+</a>
+
+<a href="fichier.html" class="btn-retour">
+    <button>Retour</button>
+</a>
+
+<h1>Bibliothèque des scans</h1>
+
+<h2>Détail du scan</h2>
+
+<div class="zone-scan">
+
+    <h3 id="nomFichier"></h3>
+
+    <p>Total scans : <span id="totalScans">0</span></p>
+
+    <table id="tableHistorique">
+        <thead>
+            <tr>
+                <th>Numéro support</th>
+                <th>Numéro BT</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody id="historiqueBody">
+        </tbody>
+
+    </table>
+
+</div>
+
+<script>
+
+// ===============================
+// RÉCUPÉRATION FICHIER ACTIF
+// ===============================
+let fichier =
+    JSON.parse(localStorage.getItem("fichierActif"));
+
+if (!fichier) {
+
+    alert("Aucun fichier trouvé");
+
+    window.location.href = "fichier.html";
+}
+
+
+// ===============================
+// TITRE
+// ===============================
+document.getElementById("nomFichier").innerText =
+    fichier.nom;
+
+
+// ===============================
+// TABLEAU
+// ===============================
+let tableBody =
+    document.getElementById("historiqueBody");
+
+
+// ===============================
+// ADAPTATION EN-TÊTES SELON TYPE
+// ===============================
+if (fichier.type === "adresse") {
+
+    document.querySelector("#tableHistorique thead tr").innerHTML = `
+        <th>Numéro support</th>
+        <th>Adresse</th>
+        <th>Action</th>
+    `;
+
+} else {
+
+    document.querySelector("#tableHistorique thead tr").innerHTML = `
+        <th>Numéro support</th>
+        <th>Numéro BT</th>
+        <th>Date</th>
+        <th>Action</th>
+    `;
+}
+
+
+// ===============================
+// GÉNÉRATION LIGNES
+// ===============================
+fichier.contenu.forEach(scan => {
+
+    let ligne =
+        document.createElement("tr");
+
+    if (fichier.type === "adresse") {
+
+        ligne.innerHTML = `
+            <td>${scan.support || "-"}</td>
+            <td>${scan.adresse || "-"}</td>
+            <td>
+                <button 
+                    class="btn-supprimer"
+                    onclick="supprimerLigne('${scan.adresse}')"
+                >
+                    ❌
+                </button>
+            </td>
+        `;
+
+    } else {
+
+        ligne.innerHTML = `
+            <td>${scan.support || "-"}</td>
+            <td>${scan.bt || "-"}</td>
+            <td>${scan.date || "-"}</td>
+            <td>
+                <button 
+                    class="btn-supprimer"
+                    onclick="supprimerLigne('${scan.bt}')"
+                >
+                    ❌
+                </button>
+            </td>
+        `;
+    }
+
+    tableBody.appendChild(ligne);
+});
+
+
+// ===============================
+// COMPTEUR
+// ===============================
+document.getElementById("totalScans").textContent =
+    fichier.contenu.length;
+
+
+// ===============================
+// SUPPRIMER UNE LIGNE + SAUVEGARDE
+// ===============================
+function supprimerLigne(valeurASupprimer) {
+
+    if (!confirm("Supprimer ce scan ?")) {
+        return;
+    }
+
+    // Cas Adresse
+    if (fichier.type === "adresse") {
+
+        fichier.contenu =
+            fichier.contenu.filter(
+                scan => scan.adresse !== valeurASupprimer
+            );
+
+    } else {
+
+        // Cas Réception / Expédition
+        fichier.contenu =
+            fichier.contenu.filter(
+                scan => scan.bt !== valeurASupprimer
+            );
+    }
+
+    // Mise à jour compteur
+    fichier.totalScans =
+        fichier.contenu.length;
+
+    // Sauvegarde fichier actif
+    localStorage.setItem(
+        "fichierActif",
+        JSON.stringify(fichier)
+    );
+
+    // Mise à jour bibliothèque globale
+    let bibliotheque =
+        JSON.parse(localStorage.getItem("fichiersScans")) || [];
+
+    let index =
+        bibliotheque.findIndex(
+            item => item.nom === fichier.nom
+        );
+
+    if (index !== -1) {
+
+        bibliotheque[index] =
+            fichier;
+
+        localStorage.setItem(
+            "fichiersScans",
+            JSON.stringify(bibliotheque)
+        );
+    }
+
+    // Recharge page
+    location.reload();
+}
+
+</script>
+
+</body>
+</html>

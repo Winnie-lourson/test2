@@ -1,0 +1,172 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+}
+/* Texte dans toutes les textes zone */
+input, textarea {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 300px;
+    font-size: 16px;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+}
+
+.menu button {
+    width: auto;
+    display: inline-block;
+    margin: 0;
+    padding: 10px 35px;
+    font-size: 20px;
+}
+
+.ligne-validation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.ligne-validation input {
+    width: 187px;
+    display: inline-block;
+    margin: 0;
+}
+
+.ligne-validation button {
+    width: auto;
+    display: inline-block;
+    margin: 0;
+    padding: 10px 25px;
+    font-size: 16px;
+}
+/* boutton accueil dans les fichier V1*/
+.btn-accueil {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.centre-page {
+    display: flex;
+    justify-content: center;  /* horizontal */
+    align-items: center;      /* vertical */
+    height: 80vh;            /* hauteur écran */
+}
+/* image de maintenance */
+.centre-page img {
+    width: 450px;
+    margin-top: 10px;
+}
+
+/* bouton grisé */
+button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+/* déplacement à droite */
+.decale-droite {
+    position: absolute;
+    left: 50px;
+    top: 125px;
+}
+
+#historique {
+    width: 300px;
+    margin: 30px auto;   /* centre le bloc */
+    text-align: left;    /* texte aligné à gauche */
+
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+
+}
+
+#historique div {
+    margin: 5px 0;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.btn-supprimer {
+    padding: 2px 6px;
+    font-size: 12px;
+    margin: 0;
+    height: 22px;
+}
+
+.btn-supprimer:hover {
+    background-color: rgb(255, 255, 255);
+    color: white;
+}
+
+#tableHistorique {
+    width: 90%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+#tableHistorique th,
+#tableHistorique td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+#tableHistorique th {
+    background-color: #f0f0f0;
+}
+
+#tableHistorique tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#tableHistorique tr:hover {
+    background-color: #eef6ff;
+}
+
+/* Ligne rouge si doublon BT */
+.doublon {
+    background-color: #ffb3b3 !important;
+}
+
+/* Petit bouton suppression */
+.btn-supprimer {
+    padding: 4px 8px;
+    font-size: 12px;
+    margin: 0;
+    height: auto;
+    cursor: pointer;
+}
+
+#tableHistorique th:last-child,
+#tableHistorique td:last-child {
+    width: 60px;
+    text-align: center;
+}
+
+#tableHistorique th:nth-child(3),
+#tableHistorique td:nth-child(3) {
+    width: 150px;
+    text-align: center;
+}

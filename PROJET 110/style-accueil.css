@@ -1,0 +1,241 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+
+    overflow-x: hidden;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+/* =========================
+   FOND GLOBAL
+========================= */
+body {
+    background: linear-gradient(135deg, #dfe9f3 0%, #ffffff 100%);
+    min-height: 100vh;
+}
+
+/* =========================
+   CONTENEUR PRINCIPAL
+========================= */
+.accueil-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}
+
+/* =========================
+   TITRE PRINCIPAL
+========================= */
+h1 {
+    font-size: 56px;
+    margin-bottom: 10px;
+
+    color: #111827;
+
+    letter-spacing: 2px;
+}
+
+/* =========================
+   SOUS TITRE
+========================= */
+h2 {
+    font-size: 28px;
+    color: #374151;
+
+    margin-bottom: 35px;
+}
+
+.sous-titre {
+    font-size: 18px;
+    color: #6b7280;
+
+    text-align: center;
+
+    margin-top: -15px;
+    margin-bottom: 30px;
+
+    font-weight: 600;
+    color: #374151;
+}
+
+/* =========================
+   CARTE MENU
+========================= */
+.menu-card {
+    background: white;
+
+    padding: 35px 50px 50px 50px;
+
+    border-radius: 24px;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   MENU
+========================= */
+.menu {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+/* =========================
+   BOUTONS
+========================= */
+.menu button {
+    width: 220px;
+
+    min-height: 64px;
+
+    padding: 18px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+
+    touch-action: manipulation;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+.menu button:hover {
+    background: #1d4ed8;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+/* =========================
+   RESPONSIVE DESKTOP / ZEBRA TC52
+========================= */
+
+/* Tablettes / Zebra portrait */
+@media (max-width: 900px) {
+
+    body {
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .accueil-container {
+        justify-content: flex-start;
+
+        padding-top: 40px;
+
+        min-height: 100vh;
+    }
+
+    .logo-accueil {
+        max-width: 92%;
+    }
+
+    h1 {
+        font-size: 34px;
+
+        letter-spacing: 3px;
+
+        text-align: center;
+
+        margin-bottom: 8px;
+    }
+
+    h2 {
+        font-size: 20px;
+
+        margin-bottom: 25px;
+
+        text-align: center;
+    }
+
+    .sous-titre {
+        font-size: 18px;
+
+        margin-top: 0;
+
+        margin-bottom: 25px;
+    }
+
+    .menu-card {
+        width: 100%;
+
+        max-width: 620px;
+
+        padding: 30px 22px;
+
+        border-radius: 22px;
+    }
+
+    .menu {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .menu button {
+        width: 100%;
+
+        min-height: 72px;
+
+        font-size: 24px;
+
+        border-radius: 18px;
+    }
+}
+
+/* Petits écrans Zebra / smartphones */
+@media (max-width: 720px) {
+
+    .accueil-container {
+        padding-top: 25px;
+    }
+
+    .logo-accueil {
+        max-width: 95%;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    .sous-titre {
+        font-size: 16px;
+    }
+
+    .menu-card {
+        padding: 22px 18px;
+    }
+
+    .menu button {
+        min-height: 68px;
+
+        font-size: 22px;
+    }
+}
